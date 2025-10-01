@@ -34,6 +34,12 @@ app.get('/', (req, res) => {
 }
 );
 
+app.get('/api', (req, res) => {
+    res.send('Welcome to the Contact Management API');
+}
+);
+
+
 // Start server
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
