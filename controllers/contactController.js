@@ -12,7 +12,7 @@ exports.submitContactForm = async (req, res) => {
         res.status(200).json({ message: 'Contact form submitted successfully' });
     } catch (error) {
         console.error(error);
-        res.status(500).json({ error: 'Failed to submit contact form' });
+        res.status(500).json({ error: 'Failed to submit contact form', error });
     }
 };
 
@@ -22,7 +22,7 @@ exports.getAllContacts = async (req, res) => {
         res.status(200).json(contacts);
     } catch (error) {
         console.error(error);
-        res.status(500).json({ error: 'Failed to fetch contacts' });
+        res.status(500).json({ error: 'Failed to fetch contacts' , error});
     }
 };
 
