@@ -1,10 +1,12 @@
 const express = require('express');
 const cors = require('cors');
-const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const contactRoutes = require('./routes/contactRoute');
-
+const db = require('./config/db');
 dotenv.config();
+
+// MongoDB connection
+db();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -16,15 +18,17 @@ app.use(express.urlencoded({ extended: true }));
 
 
 // MongoDB connection
-mongoose.connect(process.env.MONGODB_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-});
-const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', () => {
-    console.log('Connected to MongoDB');
-});
+// mongoose.connect(process.env.MONGODB_URI, {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
+// });
+// const db = mongoose.connection;
+// db.on('error', console.error.bind(console, 'connection error:'));
+// db.once('open', () => {
+//     console.log('Connected to MongoDB');
+// });
+
+
 
 // Routes
 app.use('/api/contacts', contactRoutes);
